@@ -1,7 +1,6 @@
 import React, {useContext, useRef} from "react";
 import Link from "next/link";
 import {myglobalContext} from "@/Context/MasterContext";
-import {useRouter} from "next/router";
 
 export default function Signup()
 {

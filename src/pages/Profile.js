@@ -21,7 +21,7 @@ export default function Profile()
                   <div className={"flex flex-col h-full items-center justify-between pb-5 "}>
 
                       <div className={"text-3xl md:text-6xl font-bold mb-4"}>
-                          User's Credentials
+                          User{"'"}s Credentials
                       </div>
 
                       <main className={"md:hidden w-full divide-y-2 divide-gray-500 mb-4 border-t-2 border-b-2 border-gray-500"}>
