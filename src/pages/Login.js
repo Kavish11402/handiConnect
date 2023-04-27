@@ -2,12 +2,12 @@ import girlImg from "../../public/Assets/Images/Girl.png"
 import {useContext, useRef} from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {myglobalContext} from "@/Context/MasterContext";
+import {myGlobalContext} from "@/Context/MasterContext";
 
 
 export default function Login()
 {
-    const myLocalContext = useContext(myglobalContext)
+    const myLocalContext = useContext(myGlobalContext)
     const email = useRef()
     const password = useRef()
 

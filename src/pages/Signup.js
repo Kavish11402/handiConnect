@@ -1,11 +1,11 @@
 import React, {useContext, useRef} from "react";
 import Link from "next/link";
-import {myglobalContext} from "@/Context/MasterContext";
+import {myGlobalContext} from "@/Context/MasterContext";
 
 export default function Signup()
 {
 
-    const myLocalContext = useContext(myglobalContext);
+    const myLocalContext = useContext(myGlobalContext);
     const uName = useRef();
     const uEmail = useRef();
     const uPhoneNo = useRef();

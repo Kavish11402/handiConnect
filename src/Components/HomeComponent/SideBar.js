@@ -3,9 +3,12 @@ import announcementImg from "@/Assets/icons/bell.png"
 import settingImg from "@/Assets/icons/setting.png"
 
 import Image from "next/image";
+import {useContext} from "react";
+import {myGlobalContext} from "@/Context/MasterContext";
 
 export default function SideBar()
 {
+    const myLocalContext = useContext(myGlobalContext);
   return(
       <div className={"w-[20%] flex flex-col justify-between h-screen p-4 border-r-4 border-zinc-300"}>
 
@@ -32,7 +35,9 @@ export default function SideBar()
 
               {/* User Name */}
               <div className={"mx-auto mb-1"}>
-                  <h1 className={"font-medium text-3xl"}>Kavish Mathur</h1>
+                  <h1 className={"font-medium text-3xl"}>
+                      {myLocalContext.userInfo.userName}
+                  </h1>
               </div>
 
               {/* City , Country Name */}

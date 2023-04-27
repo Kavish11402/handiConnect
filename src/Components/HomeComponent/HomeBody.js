@@ -4,14 +4,16 @@ import SingleFeedPost from "@/Components/SingleFeedPost";
 import {deleteCookie} from "cookies-next";
 import {useRouter} from "next/router";
 import {useContext} from "react";
-import {myglobalContext} from "@/Context/MasterContext";
+import {myGlobalContext} from "@/Context/MasterContext";
+import {getPostsFromDB} from "@/API_Services/apiServices";
 
 
 
-export default function HomeBody()
+export default function HomeBody({allPost})
 {
-    const myLocalContext = useContext(myglobalContext);
+    const myLocalContext = useContext(myGlobalContext);
     console.log( myLocalContext.userInfo )
+    console.log("home Body =>",allPost)
 
     function newPost()
     {
@@ -36,6 +38,7 @@ export default function HomeBody()
     {
         deleteCookie('userState');
         router.push("/").then();
+        localStorage.removeItem("userCredential")
     }
 
     return(
@@ -123,21 +126,21 @@ export default function HomeBody()
 
                 <div className={"px-4 py-7 space-y-10"}>
 
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
-                    <SingleFeedPost/>
+                    {
+                        allPost.map(
+                            (singlePost,index)=>{
+                                return(
+                                    <SingleFeedPost
+                                        key={index}
+                                        userName={singlePost.uploaderName}
+                                        userLocation={singlePost.uploaderLocation}
+                                        postImageURL={singlePost.postImage}
+                                        desc={singlePost.productDesc}
+                                    />
+                                )
+                            }
+                        )
+                    }
 
                 </div>
 

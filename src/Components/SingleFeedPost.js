@@ -1,9 +1,18 @@
 import profilePhoto from "@/Assets/icons/man.png"
-import postBG from "@/Assets/postPlaceholder.jpg"
+import postBG_1 from "@/Assets/postPlaceholder-1.jpg"
+import postBG_2 from "@/Assets/postPlaceholder-2.jpg"
+import postBG_3 from "@/Assets/postPlaceholder-3.jpg"
+import postBG_4 from "@/Assets/postPlaceholder-4.jpg"
 
+
+
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 
-export default function SingleFeedPost()
+export default function SingleFeedPost({ userName , userLocation , postImageURL , desc })
 {
   return(
 
@@ -14,13 +23,13 @@ export default function SingleFeedPost()
 
               {/* Photo */}
               <div className={"border-2 border-black rounded-full h-fit w-fit overflow-clip pt-2 px-2"}>
-                  <Image className={"w-16 h-16"} src={profilePhoto} alt={"Profile photo"}/>
+                  <Image className={"w-16 h-16"} src={profilePhoto} alt={"Profile photo"} width={100} height={100}/>
               </div>
 
               {/* Name , Location */}
               <div className={"flex flex-col justify-center"}>
-                  <h1 className={"text-2xl"}>Kavish Mathur</h1>
-                  <h2 className={"text-zinc-500"}>Lucknow, India</h2>
+                  <h1 className={"text-2xl"}>{userName}</h1>
+                  <h2 className={"text-zinc-500"}>{userLocation}</h2>
               </div>
 
           </div>
@@ -28,7 +37,39 @@ export default function SingleFeedPost()
 
           {/* Post Photo */}
           <div>
-              <Image className={"h-96"} src={postBG} alt={"Post Image"}/>
+
+              <Slider
+                  slidesToShow={1}
+                  dots={true}
+                  autoplaySpeed={3000}
+                  speed={2000}
+                  autoplay={true}
+              >
+
+
+
+                  <div>
+                      <img className={"h-[36rem] mx-auto"} src={`${postImageURL}`} alt={"Post Image"}/>
+                  </div>
+
+                  <div>
+                      <img className={"h-[36rem] mx-auto"} src={`${postImageURL}`} alt={"Post Image"}/>
+                  </div>
+
+                  <div>
+                      <img className={"h-[36rem] mx-auto"} src={`${postImageURL}`} alt={"Post Image"}/>
+                  </div>
+
+                  <div>
+                      <img className={"h-[36rem] mx-auto"} src={`${postImageURL}`} alt={"Post Image"}/>
+                  </div>
+
+
+
+              </Slider>
+
+
+
           </div>
 
 
@@ -37,19 +78,7 @@ export default function SingleFeedPost()
 
               <h1 className={"text-3xl underline underline-offset-4 mb-3"}>Description</h1>
               <p className={"text-justify mx-6"}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl purus
-                  in mollis nunc sed. Eu consequat ac felis donec et odio pellentesque. In
-                  mollis nunc sed id semper risus in hendrerit. Nibh sed pulvinar proin
-                  gravida hendrerit lectus. Dui faucibus in ornare quam. Nullam vehicula
-                  ipsum a arcu cursus. Fringilla est ullamcorper eget nulla facilisi. Nec
-                  feugiat in fermentum posuere urna nec tincidunt praesent semper. Consectetur
-                  adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Lacus
-                  vestibulum sed arcu non odio euismod lacinia at. Arcu ac tortor dignissim
-                  convallis aenean et tortor at risus. Quisque non tellus orci ac. Venenatis cras
-                  sed felis eget velit aliquet sagittis id. Placerat duis ultricies lacus sed turpis
-                  tincidunt. Fermentum dui faucibus in ornare quam viverra orci sagittis eu. Non diam
-                  phasellus vestibulum lorem sed.
+                  {desc}
               </p>
 
           </div>

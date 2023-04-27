@@ -1,4 +1,4 @@
-import {createContext, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 import { signInWithEmailAndPassword , createUserWithEmailAndPassword } from "firebase/auth"
 import { setDoc , doc , getDoc } from "firebase/firestore"
 import {db, firebaseAuthentication} from "@/Firebase";
@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import {setCookie} from "cookies-next";
 import {useRouter} from "next/router";
 
-export const myglobalContext = createContext(null)
+export const myGlobalContext = createContext(null)
 
 
 
@@ -19,6 +19,23 @@ export default function MasterContext(props)
 
 
 
+    useEffect(
+        ()=>
+        {
+            onReload()
+        },
+        []
+    )
+
+
+    function onReload()
+    {
+        setUserInfo(  JSON.parse( localStorage.getItem( "userCredential" ) )   )
+    }
+
+
+
+
     async function userLogin( userEmail , userPassword )
     {
         await signInWithEmailAndPassword(firebaseAuthentication, userEmail, userPassword)
@@ -28,6 +45,7 @@ export default function MasterContext(props)
                     getDoc( doc( db , "Users" , `${userCredential.user.uid}` ) )
                         .then(
                             (user)=>{
+
                                 const userData = user.data()
                                 const temp =
                                     {
@@ -37,6 +55,7 @@ export default function MasterContext(props)
                                         userOccupation : userData.occupation
                                     }
                                 setUserInfo(temp)
+                                localStorage.setItem( "userCredential" , JSON.stringify( temp ) )
                                 setCookie("userState" , true)
                                 router.push("/HomePage").then();
                                 toast.success("Congratulations you are logged in")
@@ -62,6 +81,7 @@ export default function MasterContext(props)
                             name : userName,
                             phoneNo : userPhoneNo,
                             email : userEmail,
+                            occupation : userOccupation
                         }
                     ).then()
                     router.push("/HomePage").then();
@@ -88,7 +108,7 @@ export default function MasterContext(props)
 
     return(
 
-        <myglobalContext.Provider value={
+        <myGlobalContext.Provider value={
         {
             userInfo : userInfo,
             userLogin : userLogin,
@@ -98,7 +118,7 @@ export default function MasterContext(props)
         }
       }>
           {props.children}
-      </myglobalContext.Provider>
+      </myGlobalContext.Provider>
 
     );
 }

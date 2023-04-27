@@ -14,7 +14,7 @@ module.exports = {
           {
             'SignInImg' : "url('/Assets/Images/SignIn.jpg')",
             'ForgotPassImg' : "url('/Assets/Images/ForgotPass.jpg')",
-            'ChatBG' : "url('/Assets/Images/chatBG.jpg')"
+            'ChatBG' : "url('/Assets/Images/postPlaceholder-4.jpg')"
           }
     },
   },
