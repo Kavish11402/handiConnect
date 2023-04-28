@@ -23,6 +23,7 @@ export default function HomePage({allJsonData})
 }
 export async function getServerSideProps(context) {
     const data = await getPostsFromDB();
+    data.reverse()
 
     return {
         props: { allJsonData: data }, // will be passed to the page component as props

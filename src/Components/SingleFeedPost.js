@@ -1,8 +1,4 @@
 import profilePhoto from "@/Assets/icons/man.png"
-import postBG_1 from "@/Assets/postPlaceholder-1.jpg"
-import postBG_2 from "@/Assets/postPlaceholder-2.jpg"
-import postBG_3 from "@/Assets/postPlaceholder-3.jpg"
-import postBG_4 from "@/Assets/postPlaceholder-4.jpg"
 
 
 

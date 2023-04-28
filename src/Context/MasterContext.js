@@ -16,6 +16,7 @@ export default function MasterContext(props)
     const router = useRouter();
     const [userInfo , setUserInfo] = useState({})
     const [ addPostDialogStatus , setAddPostDialogStatus ] = useState( false )
+    const [ uploadLoading , setUploadLoading ] = useState(false)
 
 
 
@@ -114,7 +115,9 @@ export default function MasterContext(props)
             userLogin : userLogin,
             createUser : createUser,
             addPostDialogStatus : addPostDialogStatus,
-            setAddPostDialogStatus : setAddPostDialogStatus
+            setAddPostDialogStatus : setAddPostDialogStatus,
+            uploadLoading,
+            setUploadLoading
         }
       }>
           {props.children}

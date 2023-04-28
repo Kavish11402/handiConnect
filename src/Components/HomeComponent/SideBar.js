@@ -5,6 +5,7 @@ import settingImg from "@/Assets/icons/setting.png"
 import Image from "next/image";
 import {useContext} from "react";
 import {myGlobalContext} from "@/Context/MasterContext";
+import Link from "next/link";
 
 export default function SideBar()
 {
@@ -52,12 +53,12 @@ export default function SideBar()
           <div className={"space-y-5"}>
 
               {/* Announcements */}
-              <div className={"cursor-pointer flex flex-row bg-stone-400 hover:bg-stone-300 transition-all ease-linear rounded-3xl pl-6 py-3 space-x-4 w-72"}>
+              <Link href={"/announcements"} className={"cursor-pointer flex flex-row bg-stone-400 hover:bg-stone-300 transition-all ease-linear rounded-3xl pl-6 py-3 space-x-4 w-72"}>
 
                   <Image className={"w-8 h-8"} src={announcementImg} alt={"Icon"}/>
                   <h3 className={"font-medium text-lg h-fit my-auto"}>Announcements</h3>
 
-              </div>
+              </Link>
 
 
               {/* Settings */}
