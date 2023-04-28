@@ -5,14 +5,14 @@ import {deleteCookie} from "cookies-next";
 import {useRouter} from "next/router";
 import {useContext} from "react";
 import {myGlobalContext} from "@/Context/MasterContext";
-import {getPostsFromDB} from "@/API_Services/apiServices";
+
 
 
 
 export default function HomeBody({allPost})
 {
     const myLocalContext = useContext(myGlobalContext);
-    console.log( myLocalContext.userInfo )
+    /*console.log( myLocalContext.userInfo )*/
     console.log("home Body =>",allPost)
 
     function newPost()

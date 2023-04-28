@@ -6,9 +6,9 @@ async function getAllPosts(req,res)
     if (req.method==="GET")
     {
         Connection().then()
-        console.log("GetUsers API Called")
+        /*console.log("GetUsers API Called")*/
         const data = await Post.find()
-        console.log("data from API =>",data)
+        /*console.log("data from API =>",data)*/
         res.status(200).json( data )
 
     }

@@ -4,7 +4,7 @@ const postSchema = new mongoose.Schema(
     {
         uploaderName : String,
         uploaderLocation : String,
-        postImage : String,
+        postImage : [String],
         productName: String,
         productDesc : String,
         productPrice : String,

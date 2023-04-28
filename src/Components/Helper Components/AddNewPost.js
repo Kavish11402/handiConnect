@@ -1,7 +1,7 @@
 import { Dialog } from '@headlessui/react'
 import {useContext, useRef, useState} from "react";
 import {myGlobalContext} from "@/Context/MasterContext";
-import {savePostToDB} from "@/API_Services/apiServices";
+import {savePostToFirebaseStorage} from "@/API_Services/apiServices";
 import {ThreeDots} from "react-loader-spinner";
 import {useRouter} from "next/router";
 
@@ -29,12 +29,12 @@ export default function AddNewPost()
             {
                 uploaderName : userInfo.userName,
                 uploaderLocation : "Lucknow, India",
-                postImage : pImage,
+                postImage : Object.values(pImage),
                 productName: pName.current.value,
                 productDesc : pDescription.current.value,
                 productPrice : pPrice.current.value,
             };
-        savePostToDB(data,setUploadLoading,setAddPostDialogStatus,router)
+        savePostToFirebaseStorage(data,setUploadLoading,setAddPostDialogStatus,router)
 
     }
 
@@ -95,7 +95,7 @@ export default function AddNewPost()
                                   {/*Product Photos*/}
                                   <div className={"my-5"}>
                                       <p className={"mb-2 text-md font-bold"}>Product Name</p>
-                                      <input onChange={ (e)=>{setPImage(e.target.files[0])} } type={"file"} accept={"image/heif , image/jpeg , image/png"} className={"border-0 w-full"} placeholder="Image of Product" />
+                                      <input onChange={ (e)=>{setPImage(e.target.files)} } multiple type={"file"} accept={"image/heif , image/jpeg , image/png"} className={"border-0 w-full"} placeholder="Image of Product" />
                                   </div>
 
 

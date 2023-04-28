@@ -44,21 +44,18 @@ export default function SingleFeedPost({ userName , userLocation , postImageURL 
 
 
 
-                  <div>
-                      <img className={"h-[36rem] mx-auto"} src={`${postImageURL}`} alt={"Post Image"}/>
-                  </div>
+                  {
+                      postImageURL.map(
+                          (singlePostUrl,index)=>{
+                              return(
+                                  <div key={index}>
+                                      <img className={"h-[36rem] mx-auto"} src={`${singlePostUrl}`} alt={"Post Image"}/>
+                                  </div>
+                              )
+                          }
+                      )
+                  }
 
-                  <div>
-                      <img className={"h-[36rem] mx-auto"} src={`${postImageURL}`} alt={"Post Image"}/>
-                  </div>
-
-                  <div>
-                      <img className={"h-[36rem] mx-auto"} src={`${postImageURL}`} alt={"Post Image"}/>
-                  </div>
-
-                  <div>
-                      <img className={"h-[36rem] mx-auto"} src={`${postImageURL}`} alt={"Post Image"}/>
-                  </div>
 
 
 
