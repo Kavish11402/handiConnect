@@ -13,6 +13,6 @@ export default function savePost(req,res)
     }
     else
     {
-
+        res.status(405).json({message:`Sorry wrong method (${req.method}) is used. Use (POST) Method`})
     }
 }

@@ -114,7 +114,7 @@ export default function Signup()
 
 
 
-                      <p className={"mt-5 xl:mt-10 xl:mt-10 text-sm lg:text-base xl:text-lg"} >Already have an account?
+                      <p className={"mt-5 xl:mt-10 text-sm lg:text-base xl:text-lg"} >Already have an account?
                           <Link href={"/Login"}>
                               <button className={"ml-2 font-bold"}>Login</button>
                           </Link>

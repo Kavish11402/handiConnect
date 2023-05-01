@@ -1,6 +1,6 @@
 import logoutIcon from "@/Assets/icons/logout.png"
 import Image from "next/image";
-import SingleFeedPost from "@/Components/SingleFeedPost";
+import SingleFeedPost from "@/Components/Helper Components/SingleFeedPost";
 import {deleteCookie} from "cookies-next";
 import {useRouter} from "next/router";
 import {useContext} from "react";
@@ -83,8 +83,7 @@ export default function HomeBody({allPost})
                                                 py-2 
                                                 text-center 
                                                 text-base 
-                                                font-semibold 
-                                                text-zinc-600 
+                                                font-semibold
                                                 lg:text-xl`} >
 
                                 <button>

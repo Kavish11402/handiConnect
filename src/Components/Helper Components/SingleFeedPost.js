@@ -49,7 +49,8 @@ export default function SingleFeedPost({ userName , userLocation , postImageURL 
                           (singlePostUrl,index)=>{
                               return(
                                   <div key={index}>
-                                      <img className={"h-[36rem] mx-auto"} src={`${singlePostUrl}`} alt={"Post Image"}/>
+                                      {/* TODO - Fix Image with NEXT Image */}
+                                      <img className={"h-[30rem] mx-auto"} src={`${singlePostUrl}`} alt={"Post Image"}/>
                                   </div>
                               )
                           }

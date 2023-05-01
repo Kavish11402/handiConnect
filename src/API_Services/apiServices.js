@@ -7,38 +7,54 @@ import {v4} from "uuid";
 const axiosURL = axios.create({ baseURL: "http://localhost:3000/api" });
 
 
-export function savePostToFirebaseStorage( userPost,setUploadLoading,setAddPostDialogStatus,router )
+
+
+
+
+
+export function savePostToFirebaseStorage( userPost,setUploadLoading,setAddPostDialogStatus,router,pImage )
 {
-    let allURLs = [];
-    userPost.postImage.map(
-        (singleFile,index)=>{
+    console.log(pImage)
 
-            const imageRef = ref(storage,`Post_Images/${singleFile.name+v4()}`)
+    let URLArray = []
 
-            uploadBytes( imageRef , singleFile )
-                .then(
-                    (item)=>{
-                        getDownloadURL(item.ref)
-                            .then(
-                                (url)=>{
-                                    allURLs.push(url)
-                                    if( ((userPost.postImage.length)-1)===index  )
-                                    {
-                                        userPost = { ...userPost , ...{postImage: allURLs} }
-                                        console.log("All saved URLs =>",userPost)
-                                        savePostToMongoDB(userPost,setUploadLoading,setAddPostDialogStatus,router)
-                                    }
-                                }
-                            )
+    pImage.map(
+        (singleFile) => {
+
+            uploadBytes( ref(storage,`Post_Images/${singleFile.name+v4()}`) , singleFile )
+                .then((uploadResult)=>
+                    {
+                        getDownloadURL( uploadResult.ref )
+                            .then((url)=>
+                            {
+                                setURLs(url,URLArray,pImage.length,userPost,setUploadLoading,setAddPostDialogStatus,router)
+
+                            })
                     }
                 )
 
+
         }
     )
+
+
+}
+function setURLs(url, URLArray , pImageLength , userPost , setUploadLoading,setAddPostDialogStatus,router )
+{
+    URLArray.push(url)
+    if( (URLArray.length===pImageLength) )
+    {
+        savePostToMongoDB(URLArray,userPost , setUploadLoading,setAddPostDialogStatus,router)
+    }
 }
 
-function savePostToMongoDB(userPost,setUploadLoading,setAddPostDialogStatus,router)
+
+
+
+
+function savePostToMongoDB(allURL,userPost , setUploadLoading,setAddPostDialogStatus,router)
 {
+    userPost = { ...userPost , ...{ postImage : allURL } }
     axiosURL
         .post("/savePost" , userPost)
         .then(()=>
@@ -49,6 +65,7 @@ function savePostToMongoDB(userPost,setUploadLoading,setAddPostDialogStatus,rout
             router.push("/HomePage")
         })
         .catch(()=>{console.log("error Occurred")})
+    console.log("Data =>",userPost);
 
 }
 

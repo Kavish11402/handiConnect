@@ -18,7 +18,7 @@ export default function Login()
   return(
       <div className={"min-h-screen bg-gradient-to-br from-purple-600 via-purple-600 to-blue-600 flex flex-col items-center justify-center"}>
 
-          <div className={"shadow-2xl shadow-black/50 bg-white w-[90%] rounded-3xl shadow-2xl shadow-black/50 lg:w-fit lg:flex lg:flex-row"}>
+          <div className={"shadow-2xl shadow-black/50 bg-white w-[90%] rounded-3xl lg:w-fit lg:flex lg:flex-row"}>
 
               <div className={"rounded-l-3xl bg-purple-700 lg:flex flex-col justify-center text-white font-semibold text-lg hidden"}>
 

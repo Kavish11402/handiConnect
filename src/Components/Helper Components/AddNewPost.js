@@ -12,8 +12,6 @@ export default function AddNewPost()
 
     const {userInfo , addPostDialogStatus , setAddPostDialogStatus , uploadLoading , setUploadLoading } = useContext(myGlobalContext);
 
-
-    /*const pImage = useRef(null)*/
     const pName = useRef(null)
     const pPrice = useRef(null)
     const pDescription = useRef(null)
@@ -22,19 +20,18 @@ export default function AddNewPost()
     const router = useRouter()
 
 
-    function formHandler(event)
+    function formHandler()
     {
         setUploadLoading(true)
         const data =
             {
                 uploaderName : userInfo.userName,
                 uploaderLocation : "Lucknow, India",
-                postImage : Object.values(pImage),
                 productName: pName.current.value,
                 productDesc : pDescription.current.value,
                 productPrice : pPrice.current.value,
             };
-        savePostToFirebaseStorage(data,setUploadLoading,setAddPostDialogStatus,router)
+        savePostToFirebaseStorage(data,setUploadLoading,setAddPostDialogStatus,router,Object.values(pImage))
 
     }
 
@@ -81,7 +78,7 @@ export default function AddNewPost()
 
                           </div>
                           :
-                          <form onSubmit={ (event)=>{ event.preventDefault(); formHandler(event); } } >
+                          <form onSubmit={ (event)=>{ event.preventDefault(); formHandler(); } } >
 
                               {/*Header*/}
                               <header className={"bg-gray-400/50 rounded-t-xl text-center text-3xl font-bold py-2.5"} >Create New Post</header>
