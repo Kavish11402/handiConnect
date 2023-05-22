@@ -1,10 +1,12 @@
 import {createContext, useEffect, useState} from "react";
 import { signInWithEmailAndPassword , createUserWithEmailAndPassword } from "firebase/auth"
 import { setDoc , doc , getDoc } from "firebase/firestore"
-import {db, firebaseAuthentication} from "@/Firebase";
+import {db, firebaseAuthentication, storage} from "@/Firebase";
 import toast from "react-hot-toast";
 import {setCookie} from "cookies-next";
 import {useRouter} from "next/router";
+import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
+import {v4} from "uuid";
 
 export const myGlobalContext = createContext(null)
 
@@ -13,10 +15,15 @@ export const myGlobalContext = createContext(null)
 export default function MasterContext(props)
 {
 
-    const router = useRouter();
+    const router= useRouter();
     const [userInfo , setUserInfo] = useState({})
-    const [ addPostDialogStatus , setAddPostDialogStatus ] = useState( false )
     const [ uploadLoading , setUploadLoading ] = useState(false)
+
+    /*  Dialog box States */
+    const [ addPostDialogStatus , setAddPostDialogStatus ] = useState( false )
+    const [ createAnnouncementDialogStatus , setCreateAnnouncementDialogStatus ] = useState(false)
+    const [ editProfileDialogStatus , setEditProfileDialogStatus ] = useState(false)
+
 
 
 
@@ -50,6 +57,7 @@ export default function MasterContext(props)
                                 const userData = user.data()
                                 const temp =
                                     {
+                                        profileImage : userData.profileImage,
                                         uid : userCredential.user.uid,
                                         userEmail : userCredential.user.email,
                                         userName : userData.name,
@@ -71,24 +79,42 @@ export default function MasterContext(props)
      }
 
 
-    async function createUser( userName , userPhoneNo , userEmail , userPass , userOccupation )
+    function createUser( profileImage , userProfile , userPass )
     {
-        createUserWithEmailAndPassword( firebaseAuthentication , userEmail , userPass)
+
+
+        uploadBytes( ref(storage,`User_Profile_Images/${profileImage.name+v4()}`) , profileImage )
+            .then((uploadResult)=>
+                {
+                    getDownloadURL( uploadResult.ref )
+                        .then((url)=>
+                        {
+
+                            saveUserProfileToFirebase( url , userProfile , userPass )
+
+                        })
+                }
+            )
+    }
+
+    function saveUserProfileToFirebase(url , userProfile , userPass)
+    {
+        userProfile = { ...userProfile , ...{ profileImage : url } }
+
+        createUserWithEmailAndPassword( firebaseAuthentication , userProfile.email , userPass)
             .then(
                 (userCredential)=>{
-                    setDoc(
-                        doc( db , "Users" , `${userCredential.user.uid}` ),
-                        {
-                            name : userName,
-                            phoneNo : userPhoneNo,
-                            email : userEmail,
-                            occupation : userOccupation
-                        }
-                    ).then()
-                    router.push("/HomePage").then();
-                    toast.success(`Congratulations Account using Email Id : ${userEmail} Created Successfully`) }
+                    setDoc( doc( db , "Users" , `${userCredential.user.uid}` ), userProfile )
+                        .then(
+                            ()=>{
+                                router.push("/HomePage").then();
+                                toast.success(`Congratulations Account using Email Id : ${userProfile.email} Created Successfully`)
+                            }
+                        )
+                }
             )
             .catch((e)=>{ toast.error(e.message) })
+
     }
 
 
@@ -112,12 +138,17 @@ export default function MasterContext(props)
         <myGlobalContext.Provider value={
         {
             userInfo : userInfo,
+            setUserInfo : setUserInfo,
             userLogin : userLogin,
             createUser : createUser,
             addPostDialogStatus : addPostDialogStatus,
-            setAddPostDialogStatus : setAddPostDialogStatus,
-            uploadLoading,
-            setUploadLoading
+            setAddPostDialogStatus :setAddPostDialogStatus,
+            uploadLoading : uploadLoading,
+            setUploadLoading : setUploadLoading,
+            createAnnouncementDialogStatus : createAnnouncementDialogStatus,
+            setCreateAnnouncementDialogStatus : setCreateAnnouncementDialogStatus,
+            editProfileDialogStatus : editProfileDialogStatus,
+            setEditProfileDialogStatus : setEditProfileDialogStatus
         }
       }>
           {props.children}

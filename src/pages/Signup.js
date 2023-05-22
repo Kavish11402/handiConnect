@@ -1,10 +1,11 @@
-import React, {useContext, useRef} from "react";
+import React, {useContext, useRef, useState} from "react";
 import Link from "next/link";
 import {myGlobalContext} from "@/Context/MasterContext";
 
 export default function Signup()
 {
 
+    const [ profileImage , setProfileImage ] = useState(null)
     const myLocalContext = useContext(myGlobalContext);
     const uName = useRef();
     const uEmail = useRef();
@@ -13,10 +14,18 @@ export default function Signup()
     const uOccpation = useRef();
 
 
-    function formHandler(e)
+    function formHandler()
     {
-        e.preventDefault();
-        myLocalContext.createUser( uName.current.value , uPhoneNo.current.value , uEmail.current.value , uPass.current.value , uOccpation.current.value )
+
+        const data =
+            {
+                name : uName.current.value,
+                phoneNo : uPhoneNo.current.value,
+                email : uEmail.current.value,
+                occupation : uOccpation.current.value
+            }
+
+        myLocalContext.createUser( profileImage[0] , data , uPass.current.value )
     }
 
 
@@ -35,7 +44,24 @@ export default function Signup()
 
               <main className={"mt-8 flex flex-col"}>
 
-                  <form className={"flex flex-col mx-5 lg:mx-0 space-y-5 xl:space-y-8"} onSubmit={ (e)=>{ formHandler(e) }  } >
+                  <form className={"flex flex-col mx-5 lg:mx-0 space-y-5 xl:space-y-8"} onSubmit={ (e)=>{ e.preventDefault(); formHandler() }  } >
+
+
+                      {/*Profile Photo*/}
+                      <div className={"relative flex flex-col space-y-3 px-2"}>
+
+                          <h2 className={"text-gray-500"}>Choose Profile Photo</h2>
+
+                          <input
+                              onChange={ (e)=>{setProfileImage(e.target.files)} }
+                              type={"file"}
+                              accept={"image/heif , image/jpeg , image/png"}
+                              className={"w-fit"}
+                              placeholder="Image of Product"
+                          />
+
+                      </div>
+
 
                       {/*Name*/}
                       <div className={"relative flex flex-col"}>

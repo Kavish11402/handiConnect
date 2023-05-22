@@ -2,6 +2,8 @@ import SideBar from "@/Components/HomeComponent/SideBar";
 import HomeBody from "@/Components/HomeComponent/HomeBody";
 import AddNewPost from "@/Components/Helper Components/AddNewPost";
 import {getPostsFromDB} from "@/API_Services/apiServices";
+import CreateAnnouncement from "@/Components/Helper Components/CreateAnnouncement";
+import EditProfile from "@/Components/Helper Components/EditProfile";
 
 
 export default function HomePage({allJsonData})
@@ -12,11 +14,19 @@ export default function HomePage({allJsonData})
         {/* SideBar */}
         <SideBar/>
 
+        {console.log(allJsonData)}
+
         {/* Body */}
         <HomeBody allPost={allJsonData}/>
 
-        {/* Add New Post */}
+        {/* Add New Post Dialog box */}
         <AddNewPost/>
+
+        {/* Create Announcement Dialog box */}
+        <CreateAnnouncement/>
+
+        {/* Edit Profile Dialog box */}
+        <EditProfile/>
 
     </div>
   );

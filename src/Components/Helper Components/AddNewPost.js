@@ -26,6 +26,7 @@ export default function AddNewPost()
         const data =
             {
                 uploaderName : userInfo.userName,
+                uploaderProfileImage : userInfo.profileImage,
                 uploaderLocation : "Lucknow, India",
                 productName: pName.current.value,
                 productDesc : pDescription.current.value,
@@ -92,7 +93,7 @@ export default function AddNewPost()
                                   {/*Product Photos*/}
                                   <div className={"my-5"}>
                                       <p className={"mb-2 text-md font-bold"}>Product Name</p>
-                                      <input onChange={ (e)=>{setPImage(e.target.files)} } multiple type={"file"} accept={"image/heif , image/jpeg , image/png"} className={"border-0 w-full"} placeholder="Image of Product" />
+                                      <input onChange={ (e)=>{setPImage(e.target.files)} } multiple type={"file"} accept={"image/heif , image/jpeg , image/png , image/webp"} className={"border-0 w-full"} placeholder="Image of Product" />
                                   </div>
 
 

@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
       <>
           <Toaster/>
           <MasterContext>
-              <NextNProgress color={"#F59E0B"} options={{ showSpinner: false, easing: "ease" }} />
+              <NextNProgress color={"#F59E0B"} options={{ showSpinner: true, easing: "ease" }} />
               <Component {...pageProps} />
           </MasterContext>
       </>
