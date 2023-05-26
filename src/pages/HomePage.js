@@ -4,6 +4,7 @@ import AddNewPost from "@/Components/Helper Components/AddNewPost";
 import {getPostsFromDB} from "@/API_Services/apiServices";
 import CreateAnnouncement from "@/Components/Helper Components/CreateAnnouncement";
 import EditProfile from "@/Components/Helper Components/EditProfile";
+import ViewProfile from "@/Components/Helper Components/DialogBox Components/ViewProfile";
 
 
 export default function HomePage({allJsonData})
@@ -14,7 +15,6 @@ export default function HomePage({allJsonData})
         {/* SideBar */}
         <SideBar/>
 
-        {console.log(allJsonData)}
 
         {/* Body */}
         <HomeBody allPost={allJsonData}/>
@@ -27,6 +27,9 @@ export default function HomePage({allJsonData})
 
         {/* Edit Profile Dialog box */}
         <EditProfile/>
+
+        {/*View Profile*/}
+        <ViewProfile/>
 
     </div>
   );

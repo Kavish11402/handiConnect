@@ -11,8 +11,6 @@ const axiosURL = axios.create({ baseURL: "http://localhost:3000/api" });
 
 
 
-
-
 export function savePostToFirebaseStorage( userPost,setUploadLoading,setAddPostDialogStatus,router,pImage )
 {
     console.log(pImage)
@@ -49,7 +47,7 @@ function setURLs(url, URLArray , pImageLength , userPost , setUploadLoading,setA
 }
 
 
-export async function editProfile( userData , setEditProfileDialogStatus , setUploadLoading , setUserInfo , router )
+export async function editProfile( userData , setViewProfileDialogStatus , setUploadLoading , setUserInfo , router , setEditProfileState )
 {
 
     const oldData = JSON.parse( localStorage.getItem( "userCredential" ) )
@@ -101,8 +99,9 @@ export async function editProfile( userData , setEditProfileDialogStatus , setUp
         .then(()=>
         {
             console.log("all Done");
-            setEditProfileDialogStatus(false)
+            setViewProfileDialogStatus(false)
             setUploadLoading(false)
+            setEditProfileState(false)
             router.push("/HomePage")
         })
         .catch(()=>{console.log("error Occurred")})
@@ -127,6 +126,7 @@ export function deletePost(postID,router)
         .then(()=>
         {
             router.push("/HomePage")
+            /*TODO - Add Toast Here*/
         })
         .catch(()=>{console.log("error Occurred")})
 }
@@ -154,4 +154,21 @@ export function getPostsFromDB()
     return axiosURL
         .get('getAllPosts')
         .then((response) => response.data);
+}
+
+
+
+export function PostLikesHandler(postID,likeList,router)
+{
+    axiosURL
+        .post(
+            "/postLike",
+            { postID, likeList }
+            )
+        .then(()=>
+        {
+            router.push("/HomePage")
+            /*TODO - Add Toast Here*/
+        })
+        .catch(()=>{console.log("error Occurred")})
 }

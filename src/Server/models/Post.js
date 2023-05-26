@@ -1,14 +1,16 @@
 import mongoose from "mongoose";
 
-const postSchema = new mongoose.Schema(
+const postSchema = new mongoose.Schema
+(
     {
-            uploaderName : String,
-            uploaderProfileImage : String,
-            uploaderLocation : String,
-            postImage : [String],
-            productName: String,
-            productDesc : String,
-            productPrice : String,
+        uploaderName : String,
+        uploaderProfileImage : String,
+        uploaderLocation : String,
+        postImage : [String],
+        productName: String,
+        productDesc : String,
+        productPrice : String,
+        productLikesList : [String]
     }
 )
 mongoose.models = {}

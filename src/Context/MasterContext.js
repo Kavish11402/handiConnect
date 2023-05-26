@@ -23,6 +23,7 @@ export default function MasterContext(props)
     const [ addPostDialogStatus , setAddPostDialogStatus ] = useState( false )
     const [ createAnnouncementDialogStatus , setCreateAnnouncementDialogStatus ] = useState(false)
     const [ editProfileDialogStatus , setEditProfileDialogStatus ] = useState(false)
+    const [ viewProfileDialogStatus , setViewProfileDialogStatus ] = useState(false);
 
 
 
@@ -148,7 +149,9 @@ export default function MasterContext(props)
             createAnnouncementDialogStatus : createAnnouncementDialogStatus,
             setCreateAnnouncementDialogStatus : setCreateAnnouncementDialogStatus,
             editProfileDialogStatus : editProfileDialogStatus,
-            setEditProfileDialogStatus : setEditProfileDialogStatus
+            setEditProfileDialogStatus : setEditProfileDialogStatus,
+            viewProfileDialogStatus : viewProfileDialogStatus ,
+            setViewProfileDialogStatus : setViewProfileDialogStatus
         }
       }>
           {props.children}

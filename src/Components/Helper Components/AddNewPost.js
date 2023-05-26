@@ -31,6 +31,7 @@ export default function AddNewPost()
                 productName: pName.current.value,
                 productDesc : pDescription.current.value,
                 productPrice : pPrice.current.value,
+                productLikesList : []
             };
         savePostToFirebaseStorage(data,setUploadLoading,setAddPostDialogStatus,router,Object.values(pImage))
 

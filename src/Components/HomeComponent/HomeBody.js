@@ -4,7 +4,7 @@ import SingleFeedPost from "@/Components/Helper Components/SingleFeedPost";
 import {Tab} from "@headlessui/react";
 import {deleteCookie} from "cookies-next";
 import {useRouter} from "next/router";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {myGlobalContext} from "@/Context/MasterContext";
 
 
@@ -51,6 +51,122 @@ export default function HomeBody({allPost})
             )
         }
     }
+
+
+    function buyerFeeds()
+    {
+        return(
+            <div className={"space-y-10"}>
+
+                {
+                    allPost.map(
+                        (singlePost,index)=>{
+
+                            const state = singlePost.productLikesList.includes(myLocalContext.userInfo.uid)
+
+                            return(
+                                <SingleFeedPost
+                                    key={index}
+                                    singlePost={singlePost}
+                                    state={state}
+                                />
+                            )
+                        }
+                    )
+                }
+
+
+            </div>
+        )
+    }
+
+    function sellerFeeds()
+    {
+        return(
+            <Tab.Group>
+
+                <Tab.List className={"flex flex-row justify-center"}>
+
+                    <div className={"flex flex-col lg:flex-row justify-center w-fit bg-amber-300/70 p-2 rounded-xl space-y-2 lg:space-y-0 lg:space-x-2 mt-4 "}>
+
+                        {/* Overview Button */}
+                        <Tab className={"transition-all ease-linear w-80 rounded-xl py-2.5 text-xl font-medium text-pink-500 outline-0 border-2 border-transparent" +
+                            " ui-selected:bg-white ui-selected:shadow ui-selected:border-pink-500" +
+                            " ui-not-selected:text-gray-400 ui-not-selected:hover:bg-white/[0.5] ui-not-selected:hover:text-pink-500"}>
+                            All Posts
+                        </Tab>
+
+                        {/* Course Content Button */}
+                        <Tab className={"transition-all ease-linear w-80 rounded-xl py-2.5 text-xl font-medium text-pink-500 outline-0 border-2 border-transparent" +
+                            " ui-selected:bg-white ui-selected:shadow ui-selected:border-pink-500" +
+                            " ui-not-selected:text-gray-400 ui-not-selected:hover:bg-white/[0.5] ui-not-selected:hover:text-pink-500"}>
+                            My Posts
+                        </Tab>
+
+
+                    </div>
+
+                </Tab.List>
+
+                <Tab.Panels className={"mt-10 lg:mx-16"}>
+
+                    {/* All Posts */}
+                    <Tab.Panel>
+                        <div className={"space-y-10"}>
+
+                            {
+                                allPost.map(
+                                    (singlePost,index)=>{
+
+                                        const state = singlePost.productLikesList.includes(myLocalContext.userInfo.uid)
+
+                                        return(
+                                            <SingleFeedPost
+                                                key={index}
+                                                singlePost={singlePost}
+                                                state={state}
+                                            />
+                                        )
+                                    }
+                                )
+                            }
+
+
+                        </div>
+                    </Tab.Panel>
+
+                    {/* My Posts */}
+                    <Tab.Panel>
+                        <div className={"space-y-10"}>
+
+                            {
+                                allPost.map(
+                                    (singlePost,index)=>{
+                                        if ( singlePost.uploaderName === myLocalContext.userInfo.userName )
+                                        {
+                                            const state = singlePost.productLikesList.includes(myLocalContext.userInfo.uid)
+                                            return(
+                                                <SingleFeedPost
+                                                    key={index}
+                                                    singlePost={singlePost}
+                                                    state={state}
+                                                />
+                                            )
+                                        }
+                                    }
+                                )
+                            }
+
+                        </div>
+                    </Tab.Panel>
+
+
+                </Tab.Panels>
+
+            </Tab.Group>
+        )
+    }
+
 
     const router = useRouter();
     function handler()
@@ -145,112 +261,7 @@ export default function HomeBody({allPost})
 
                 <div className={"px-4 py-7"}>
 
-
-
-                    <Tab.Group>
-
-                        <Tab.List className={"flex flex-row justify-center"}>
-
-                            <div className={"flex flex-col lg:flex-row justify-center w-fit bg-amber-300/70 p-2 rounded-xl space-y-2 lg:space-y-0 lg:space-x-2 mt-4 "}>
-
-                                {/* Overview Button */}
-                                <Tab className={"transition-all ease-linear w-80 rounded-xl py-2.5 text-xl font-medium text-pink-500 outline-0 border-2 border-transparent" +
-                                    " ui-selected:bg-white ui-selected:shadow ui-selected:border-pink-500" +
-                                    " ui-not-selected:text-gray-400 ui-not-selected:hover:bg-white/[0.5] ui-not-selected:hover:text-pink-500"}>
-                                    All Posts
-                                </Tab>
-
-                                {/* Course Content Button */}
-                                <Tab className={"transition-all ease-linear w-80 rounded-xl py-2.5 text-xl font-medium text-pink-500 outline-0 border-2 border-transparent" +
-                                    " ui-selected:bg-white ui-selected:shadow ui-selected:border-pink-500" +
-                                    " ui-not-selected:text-gray-400 ui-not-selected:hover:bg-white/[0.5] ui-not-selected:hover:text-pink-500"}>
-                                    My Posts
-                                </Tab>
-
-
-                            </div>
-
-                        </Tab.List>
-
-                        <Tab.Panels className={"mt-10 lg:mx-16"}>
-
-                            {/* All Posts */}
-                            <Tab.Panel>
-                                <div className={"space-y-10"}>
-
-                                    {
-                                        allPost.map(
-                                            (singlePost,index)=>{
-                                                return(
-                                                    <SingleFeedPost
-                                                        key={index}
-                                                        singlePost={singlePost}
-                                                    />
-                                                )
-                                            }
-                                        )
-                                    }
-
-
-                                </div>
-                            </Tab.Panel>
-
-                            {/* My Posts */}
-                            <Tab.Panel>
-                                <div className={"space-y-10"}>
-
-                                    {
-                                        allPost.map(
-                                            (singlePost,index)=>{
-                                                if ( singlePost.uploaderName === myLocalContext.userInfo.userName )
-                                                {
-                                                    return(
-                                                        <SingleFeedPost
-                                                            key={index}
-                                                            singlePost={singlePost}
-                                                        />
-                                                    )
-                                                }
-                                            }
-                                        )
-                                    }
-
-                                </div>
-                            </Tab.Panel>
-
-
-                        </Tab.Panels>
-
-                    </Tab.Group>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    { myLocalContext.userInfo.userOccupation==="Buyer"? buyerFeeds() : sellerFeeds() }
 
                 </div>
 
