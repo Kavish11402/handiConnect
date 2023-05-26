@@ -230,6 +230,10 @@ export default function SingleFeedPost({ singlePost , state })
 
 
                       <div
+                          onClick={ ()=>{
+                              myLocalContext.setViewPostData(singlePost)
+                              myLocalContext.setViewPostDialogStatus(true)
+                          } }
                           className={"flex flex-col justify-center w-fit rounded-3xl px-5 py-1 bg-stone-400 cursor-pointer hover:bg-stone-300 transition-all ease-linear"}>
                           <p className={"text-md font-semibold"}>View Post</p>
                       </div>

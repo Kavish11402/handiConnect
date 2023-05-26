@@ -24,6 +24,8 @@ export default function MasterContext(props)
     const [ createAnnouncementDialogStatus , setCreateAnnouncementDialogStatus ] = useState(false)
     const [ editProfileDialogStatus , setEditProfileDialogStatus ] = useState(false)
     const [ viewProfileDialogStatus , setViewProfileDialogStatus ] = useState(false);
+    const [ viewPostDialogStatus , setViewPostDialogStatus ] = useState(true);
+    const [ viewPostData , setViewPostData ] = useState({});
 
 
 
@@ -138,20 +140,24 @@ export default function MasterContext(props)
 
         <myGlobalContext.Provider value={
         {
-            userInfo : userInfo,
-            setUserInfo : setUserInfo,
-            userLogin : userLogin,
-            createUser : createUser,
-            addPostDialogStatus : addPostDialogStatus,
-            setAddPostDialogStatus :setAddPostDialogStatus,
-            uploadLoading : uploadLoading,
-            setUploadLoading : setUploadLoading,
-            createAnnouncementDialogStatus : createAnnouncementDialogStatus,
-            setCreateAnnouncementDialogStatus : setCreateAnnouncementDialogStatus,
-            editProfileDialogStatus : editProfileDialogStatus,
-            setEditProfileDialogStatus : setEditProfileDialogStatus,
-            viewProfileDialogStatus : viewProfileDialogStatus ,
-            setViewProfileDialogStatus : setViewProfileDialogStatus
+            userInfo,
+            setUserInfo,
+            userLogin,
+            createUser,
+            addPostDialogStatus,
+            setAddPostDialogStatus,
+            uploadLoading,
+            setUploadLoading,
+            createAnnouncementDialogStatus,
+            setCreateAnnouncementDialogStatus,
+            editProfileDialogStatus,
+            setEditProfileDialogStatus,
+            viewProfileDialogStatus ,
+            setViewProfileDialogStatus,
+            viewPostDialogStatus ,
+            setViewPostDialogStatus,
+            viewPostData ,
+            setViewPostData
         }
       }>
           {props.children}

@@ -5,6 +5,7 @@ import {getPostsFromDB} from "@/API_Services/apiServices";
 import CreateAnnouncement from "@/Components/Helper Components/CreateAnnouncement";
 import EditProfile from "@/Components/Helper Components/EditProfile";
 import ViewProfile from "@/Components/Helper Components/DialogBox Components/ViewProfile";
+import ViewPost from "@/Components/Helper Components/DialogBox Components/ViewPost";
 
 
 export default function HomePage({allJsonData})
@@ -30,6 +31,9 @@ export default function HomePage({allJsonData})
 
         {/*View Profile*/}
         <ViewProfile/>
+
+        {/*View Post*/}
+        <ViewPost/>
 
     </div>
   );
