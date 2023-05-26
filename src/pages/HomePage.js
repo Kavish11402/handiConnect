@@ -1,9 +1,9 @@
 import SideBar from "@/Components/HomeComponent/SideBar";
 import HomeBody from "@/Components/HomeComponent/HomeBody";
-import AddNewPost from "@/Components/Helper Components/AddNewPost";
+import AddNewPost from "@/Components/Helper Components/DialogBox Components/AddNewPost";
 import {getPostsFromDB} from "@/API_Services/apiServices";
-import CreateAnnouncement from "@/Components/Helper Components/CreateAnnouncement";
-import EditProfile from "@/Components/Helper Components/EditProfile";
+import CreateAnnouncement from "@/Components/Helper Components/DialogBox Components/CreateAnnouncement";
+import EditProfile from "@/Components/Helper Components/DialogBox Components/EditProfile";
 import ViewProfile from "@/Components/Helper Components/DialogBox Components/ViewProfile";
 import ViewPost from "@/Components/Helper Components/DialogBox Components/ViewPost";
 

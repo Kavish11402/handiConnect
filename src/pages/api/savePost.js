@@ -8,7 +8,7 @@ export default function savePost(req,res)
     {
         Connection().then()
         const singlePost = new Post(req.body)
-        singlePost.save()
+        singlePost.save().then()
         res.status(200).json(req.body)
     }
     else

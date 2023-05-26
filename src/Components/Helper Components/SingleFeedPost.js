@@ -19,10 +19,10 @@ export default function SingleFeedPost({ singlePost , state })
 
     console.log("Single Post =>",singlePost)
 
-    function editPostHandler()
+    /*function editPostHandler()
     {
         console.log("Edit Post Activated")
-    }
+    }*/
 
     function deletePostHandler(postID)
     {
@@ -104,13 +104,13 @@ export default function SingleFeedPost({ singlePost , state })
                                   {
                                       myLocalContext.userInfo.userName===singlePost.uploaderName&&
                                       <div>
-                                          <Menu.Item>
+                                          {/*<Menu.Item>
                                               <button
                                                   onClick={ ()=>{editPostHandler()} }
                                                   className={"ui-active:bg-violet-500 ui-active:text-white ui-not-active: text-violet-500 group flex w-full items-center rounded-md px-2 py-2 text-sm"}>
                                                   Edit Post
                                               </button>
-                                          </Menu.Item>
+                                          </Menu.Item>*/}
                                           <Menu.Item>
                                               <button
                                                   onClick={ ()=>{deletePostHandler(singlePost._id)} }
@@ -214,6 +214,10 @@ export default function SingleFeedPost({ singlePost , state })
                       }
 
                       <svg
+                          onClick={ ()=>{
+                              myLocalContext.setViewPostData(singlePost)
+                              myLocalContext.setViewPostDialogStatus(true)
+                          } }
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"

@@ -24,8 +24,28 @@ export default function MasterContext(props)
     const [ createAnnouncementDialogStatus , setCreateAnnouncementDialogStatus ] = useState(false)
     const [ editProfileDialogStatus , setEditProfileDialogStatus ] = useState(false)
     const [ viewProfileDialogStatus , setViewProfileDialogStatus ] = useState(false);
-    const [ viewPostDialogStatus , setViewPostDialogStatus ] = useState(true);
-    const [ viewPostData , setViewPostData ] = useState({});
+    const [ viewPostDialogStatus , setViewPostDialogStatus ] = useState(false);
+    const [ viewPostData , setViewPostData ] = useState(
+        {
+            "_id": "647080b8b99dc00a6a69f924",
+            "uploaderName": "Sandeep",
+            "uploaderProfileImage": "https://firebasestorage.googleapis.com/v0/b/handiconnect-53d03.appspot.com/o/User_Profile_Images%2F20230429_130206.jpg98aa0215-4990-4812-9876-a9a4dc4114b4?alt=media&token=e5196a3e-5e08-4500-92fb-3ced6926104a",
+            "uploaderLocation": "Lucknow, India",
+            "postImage": [
+                "https://firebasestorage.googleapis.com/v0/b/handiconnect-53d03.appspot.com/o/Post_Images%2FWhatsApp%20Image%202023-04-21%20at%203.54.11%20PM.jpega33d32b2-8723-4a98-95d4-70d573556343?alt=media&token=17399a01-a26f-42e6-9603-83c76b768587"
+            ],
+            "productName": "action figure ",
+            "productComments" : [],
+            "productDesc": "fdgfd",
+            "address" : "",
+            "productPrice": "435",
+            "productLikesList": [
+                "d527EPrrYXfIcRs0i4FdAdUVfCq2",
+                "vYMXpUplD7aAQU2NxvVaJ0ZcXL53"
+            ],
+            "__v": 0
+        }
+    );
 
 
 

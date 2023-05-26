@@ -172,3 +172,21 @@ export function PostLikesHandler(postID,likeList,router)
         })
         .catch(()=>{console.log("error Occurred")})
 }
+
+
+export function addCommentToPost( commentObject , postId , router )
+{
+    axiosURL.post(
+        "/addComment",
+        {
+            commentObject,
+            postId
+        }
+    )
+        .then(()=>
+        {
+            router.push("/HomePage")
+            /*TODO - Add Toast Here*/
+        })
+        .catch(()=>{console.log("error Occurred")})
+}

@@ -1,13 +1,10 @@
 import {myGlobalContext} from "@/Context/MasterContext";
-import {useRouter} from "next/router";
-import {savePostToFirebaseStorage} from "@/API_Services/apiServices";
 import {Dialog} from "@headlessui/react";
-import {ThreeDots} from "react-loader-spinner";
-import {useContext, useRef, useState} from "react";
+import {useContext} from "react";
 
 export default function CreateAnnouncement()
 {
-  const {userInfo , createAnnouncementDialogStatus , setCreateAnnouncementDialogStatus } = useContext(myGlobalContext);
+  const {createAnnouncementDialogStatus , setCreateAnnouncementDialogStatus } = useContext(myGlobalContext);
 
 
 

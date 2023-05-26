@@ -15,6 +15,7 @@ export default function AddNewPost()
     const pName = useRef(null)
     const pPrice = useRef(null)
     const pDescription = useRef(null)
+    const pAddress = useRef(null)
 
     const [ pImage , setPImage ] = useState(null)
     const router = useRouter()
@@ -31,7 +32,9 @@ export default function AddNewPost()
                 productName: pName.current.value,
                 productDesc : pDescription.current.value,
                 productPrice : pPrice.current.value,
-                productLikesList : []
+                address : pAddress.current.value,
+                productLikesList : [],
+                productComments : []
             };
         savePostToFirebaseStorage(data,setUploadLoading,setAddPostDialogStatus,router,Object.values(pImage))
 
@@ -111,11 +114,16 @@ export default function AddNewPost()
                                       <input ref={pPrice} type={"number"}  className=" w-full rounded-xl px-2 border-2 border-black focus:border-indigo-500 focus:shadow-md" placeholder="Price of Product" />
                                   </div>
 
+                                  {/*address*/}
+                                  <div className={"my-5"}>
+                                      <p className={"mb-2 text-md font-bold"}>Address</p>
+                                      <textarea ref={pAddress} rows={2} className=" w-full rounded-xl px-2 border-2 border-black active:border-indigo-500 focus:shadow-md" placeholder="Description of Product"/>
+                                  </div>
 
                                   {/*Product Description*/}
                                   <div className={"my-5"}>
                                       <p className={"mb-2 text-md font-bold"}>Product Description</p>
-                                      <textarea ref={pDescription} className=" w-full h-36 rounded-xl px-2 border-2 border-black active:border-indigo-500 focus:shadow-md" placeholder="Description of Product"/>
+                                      <textarea ref={pDescription} rows={4} className=" w-full rounded-xl px-2 border-2 border-black active:border-indigo-500 focus:shadow-md" placeholder="Description of Product"/>
                                   </div>
 
 
