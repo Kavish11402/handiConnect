@@ -251,7 +251,7 @@ export default function SingleFeedPost({ singlePost , state })
                       </p>
 
                       <p className={"font-medium"}>
-                          { singlePost.productLikesList.length } Comments
+                          { singlePost.productComments.length } Comments
                       </p>
                   </div>
               </div>

@@ -97,14 +97,14 @@ export default function AddNewPost()
                                   {/*Product Photos*/}
                                   <div className={"my-5"}>
                                       <p className={"mb-2 text-md font-bold"}>Product Name</p>
-                                      <input onChange={ (e)=>{setPImage(e.target.files)} } multiple type={"file"} accept={"image/heif , image/jpeg , image/png , image/webp"} className={"border-0 w-full"} placeholder="Image of Product" />
+                                      <input onChange={ (e)=>{setPImage(e.target.files)} } multiple type={"file"} accept={"image/heif , image/jpeg , image/png , image/webp"} className={"border-0 ring-0"} placeholder="Image of Product" />
                                   </div>
 
 
                                   {/*Product Name*/}
                                   <div className={"my-5"}>
-                                      <p className={"mb-2 text-md font-bold"}>Product Name</p>
-                                      <input ref={pName} type={"text"}  className=" w-full rounded-xl px-2 border-2 border-black focus:border-indigo-500 focus:shadow-md" placeholder="Name of Product" />
+                                      <p className={"mb-2 text-md font-bold"}>Product Title</p>
+                                      <input ref={pName} type={"text"}  className=" w-full rounded-xl px-2 border-2 border-black focus:border-indigo-500 focus:shadow-md" placeholder="Title of Product" />
                                   </div>
 
 
@@ -117,7 +117,7 @@ export default function AddNewPost()
                                   {/*address*/}
                                   <div className={"my-5"}>
                                       <p className={"mb-2 text-md font-bold"}>Address</p>
-                                      <textarea ref={pAddress} rows={2} className=" w-full rounded-xl px-2 border-2 border-black active:border-indigo-500 focus:shadow-md" placeholder="Description of Product"/>
+                                      <textarea ref={pAddress} rows={2} className=" w-full rounded-xl px-2 border-2 border-black active:border-indigo-500 focus:shadow-md" placeholder="Address"/>
                                   </div>
 
                                   {/*Product Description*/}

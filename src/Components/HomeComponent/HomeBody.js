@@ -87,7 +87,7 @@ export default function HomeBody({allPost})
 
                 <Tab.List className={"flex flex-row justify-center"}>
 
-                    <div className={"flex flex-col lg:flex-row justify-center w-fit bg-amber-300/70 p-2 rounded-xl space-y-2 lg:space-y-0 lg:space-x-2 mt-4 "}>
+                    <div className={"flex flex-col lg:flex-row justify-center w-fit bg-amber-300/70 p-2 rounded-xl space-y-2 lg:space-y-0 lg:space-x-2 "}>
 
                         {/* Overview Button */}
                         <Tab className={"transition-all ease-linear w-80 rounded-xl py-2.5 text-xl font-medium text-pink-500 outline-0 border-2 border-transparent" +
@@ -180,11 +180,11 @@ export default function HomeBody({allPost})
         <div className={"w-[80%] max-h-screen overflow-y-scroll bg-zinc-100"}>
 
             {/* Top Bar */}
-            <div className={"bg-white sticky z-40 top-0 left-0 right-0 flex flex-row justify-between px-5 py-2 drop-shadow-xl"}>
+            <div className={"bg-white sticky z-40 top-0 left-0 right-0 flex flex-row justify-end px-5 py-2 drop-shadow-xl"}>
 
 
                 {/* Search Box */}
-                <div className={"w-[80%] 2xl:w-[60%]"}>
+                {/*<div className={"w-[80%] 2xl:w-[60%]"}>
 
                     <div className={"relative my-2 drop-shadow-lg"}>
 
@@ -229,7 +229,7 @@ export default function HomeBody({allPost})
 
                     </div>
 
-                </div>
+                </div>*/}
 
                 {/* New Post and Lockout Button */}
                 <div className={"flex flex-col justify-center"}>
@@ -255,11 +255,8 @@ export default function HomeBody({allPost})
             {/* Feeds */}
             <div className={"p-4"}>
 
-                <h1 className={"text-4xl font-semibold"}>
-                    Feeds
-                </h1>
 
-                <div className={"px-4 py-7"}>
+                <div className={"px-4 pt-2 pb-7"}>
 
                     { myLocalContext.userInfo.userOccupation==="Buyer"? buyerFeeds() : sellerFeeds() }
 

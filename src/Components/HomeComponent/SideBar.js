@@ -1,6 +1,6 @@
 import announcementImg from "@/Assets/icons/bell.png"
 import settingImg from "@/Assets/icons/setting.png"
-import handiConnectLogo from "@/Assets/logo/Untitled-2.png"
+import handiConnectLogo from "@/Assets/logo/ProjectLogo.png"
 
 import Image from "next/image";
 import {useContext} from "react";
@@ -77,12 +77,12 @@ export default function SideBar()
 
 
               {/* Settings */}
-              <div className={"cursor-pointer flex flex-row bg-stone-400 hover:bg-stone-300 transition-all ease-linear rounded-3xl pl-6 py-3 space-x-4 w-72"}>
+              {/*<div className={"cursor-pointer flex flex-row bg-stone-400 hover:bg-stone-300 transition-all ease-linear rounded-3xl pl-6 py-3 space-x-4 w-72"}>
 
                   <Image className={"w-8 h-8"} src={settingImg} alt={"Icon"}/>
                   <h3 className={"font-medium text-lg h-fit my-auto"}>Settings</h3>
 
-              </div>
+              </div>*/}
 
 
               {/* Contact US */}

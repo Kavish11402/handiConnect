@@ -10,13 +10,13 @@ export default function ViewPost()
 {
     const router = useRouter()
     const comment = useRef("")
-    const { viewPostDialogStatus , setViewPostDialogStatus , viewPostData } = useContext(myGlobalContext);
+    const { userInfo , viewPostDialogStatus , setViewPostDialogStatus , viewPostData } = useContext(myGlobalContext);
 
 
     function addCommentHandler()
     {
         let commentObjects = viewPostData.productComments;
-        commentObjects.push(JSON.stringify({ commenterName : viewPostData.uploaderName, userComment : comment.current.value }))
+        commentObjects.push(JSON.stringify({ commenterName : userInfo.userName, userComment : comment.current.value }))
 
         addCommentToPost( commentObjects , viewPostData._id , router )
     }
@@ -97,7 +97,7 @@ export default function ViewPost()
                         <div className={"flex flex-row justify-between"}>
 
                             {/*<h1 className={"text-3xl underline underline-offset-4 mb-3"}>Title</h1>*/}
-                            <p className={"text-3xl font-medium underline underline-offset-4 mb-3"}>
+                            <p className={"text-3xl font-medium underline underline-offset-4 mb-3 w-[80%]"}>
                                 {viewPostData.productName}
                             </p>
 
@@ -113,11 +113,13 @@ export default function ViewPost()
 
                         {/*Description*/}
                         <div className={"px-4 py-2 max-h-36 overflow-y-scroll "}>
+                            <h2 className={"font-bold underline"}>Description:</h2>
                             <p>{viewPostData.productDesc}</p>
                         </div>
 
                         {/*Address*/}
                         <div className={"px-4 py-2 max-h-36 overflow-y-scroll "}>
+                            <h2 className={"font-bold underline"}>Address:</h2>
                             <p>{viewPostData.address}</p>
                         </div>
 
@@ -202,7 +204,7 @@ export default function ViewPost()
                                 <div className={""}>
                                     <form onSubmit={ (event)=>{ event.preventDefault();  addCommentHandler() } }>
                                         <div className={"flex flex-row"}>
-                                            <textarea ref={comment} rows={2} className="resize-none w-full focus:ring-blue-500 focus:border-blue-500 border border-gray-300 rounded-l-md" placeholder="Add a note" required />
+                                            <textarea ref={comment} rows={2} className="resize-none w-full focus:ring-blue-500 focus:border-blue-500 border border-gray-300 rounded-l-md" placeholder="Add Comment" required />
 
                                             <button className=" px-4 py-2 border border-transparent text-sm font-medium rounded-r-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" type={"submit"} >
                                                 Comment
