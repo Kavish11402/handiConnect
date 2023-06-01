@@ -7,6 +7,7 @@ import EditProfile from "@/Components/Helper Components/DialogBox Components/Edi
 import ViewProfile from "@/Components/Helper Components/DialogBox Components/ViewProfile";
 import ViewPost from "@/Components/Helper Components/DialogBox Components/ViewPost";
 import Head from "next/head";
+import EditPost from "@/Components/Helper Components/DialogBox Components/EditPost";
 
 
 export default function HomePage({allJsonData})
@@ -44,11 +45,15 @@ export default function HomePage({allJsonData})
               {/* Edit Profile Dialog box */}
               <EditProfile/>
 
+              {/* Edit Post Dialog box */}
+              <EditPost/>
+
               {/*View Profile*/}
               <ViewProfile/>
 
               {/*View Post*/}
               <ViewPost/>
+
 
           </div>
 

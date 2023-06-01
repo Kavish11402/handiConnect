@@ -14,6 +14,9 @@ const postSchema = new mongoose.Schema
             productComments : [String],
             address : String
 
+    },
+    {
+        timestamps:true
     }
 )
 mongoose.models = {}

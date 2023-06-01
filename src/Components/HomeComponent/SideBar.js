@@ -68,12 +68,12 @@ export default function SideBar()
           <div className={"space-y-5"}>
 
               {/* Announcements */}
-              <Link href={"/announcements"} className={"cursor-pointer flex flex-row bg-stone-400 hover:bg-stone-300 transition-all ease-linear rounded-3xl pl-6 py-3 space-x-4 w-72"}>
+              {/*<Link href={"/announcements"} className={"cursor-pointer flex flex-row bg-stone-400 hover:bg-stone-300 transition-all ease-linear rounded-3xl pl-6 py-3 space-x-4 w-72"}>
 
                   <Image className={"w-8 h-8"} src={announcementImg} alt={"Icon"}/>
                   <h3 className={"font-medium text-lg h-fit my-auto"}>Announcements</h3>
 
-              </Link>
+              </Link>*/}
 
 
               {/* Settings */}
@@ -86,19 +86,19 @@ export default function SideBar()
 
 
               {/* Contact US */}
-              <div className={"cursor-pointer flex flex-row bg-stone-400 hover:bg-stone-300 transition-all ease-linear rounded-3xl pl-6 py-3 space-x-4 w-72"}>
+              {/*<div className={"cursor-pointer flex flex-row bg-stone-400 hover:bg-stone-300 transition-all ease-linear rounded-3xl pl-6 py-3 space-x-4 w-72"}>
 
                   <Image className={"w-8 h-8"} src={announcementImg} alt={"Icon"}/>
                   <h3 className={"font-medium text-lg h-fit my-auto"}>Contact Us</h3>
 
-              </div>
+              </div>*/}
 
           </div>
 
 
           {/* Version No. */}
           <div>
-              <p className={"text-lg"}>V-1.1.0</p>
+              <p className={"text-lg"}>V-2.3.1</p>
           </div>
 
 

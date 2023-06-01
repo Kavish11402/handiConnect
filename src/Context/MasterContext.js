@@ -16,13 +16,14 @@ export default function MasterContext(props)
 {
 
     const router= useRouter();
-    const [userInfo , setUserInfo] = useState({})
-    const [ uploadLoading , setUploadLoading ] = useState(false)
+    const [userInfo , setUserInfo] = useState({});
+    const [ uploadLoading , setUploadLoading ] = useState(false);
 
     /*  Dialog box States */
-    const [ addPostDialogStatus , setAddPostDialogStatus ] = useState( false )
-    const [ createAnnouncementDialogStatus , setCreateAnnouncementDialogStatus ] = useState(false)
-    const [ editProfileDialogStatus , setEditProfileDialogStatus ] = useState(false)
+    const [ addPostDialogStatus , setAddPostDialogStatus ] = useState( false );
+    const [ createAnnouncementDialogStatus , setCreateAnnouncementDialogStatus ] = useState(false);
+    const [ editPostDialogStatus , setEditPostDialogStatus ] = useState(false);
+    const [ editProfileDialogStatus , setEditProfileDialogStatus ] = useState(false);
     const [ viewProfileDialogStatus , setViewProfileDialogStatus ] = useState(false);
     const [ viewPostDialogStatus , setViewPostDialogStatus ] = useState(false);
     const [ viewPostData , setViewPostData ] = useState(
@@ -177,7 +178,9 @@ export default function MasterContext(props)
             viewPostDialogStatus ,
             setViewPostDialogStatus,
             viewPostData ,
-            setViewPostData
+            setViewPostData,
+            editPostDialogStatus,
+            setEditPostDialogStatus
         }
       }>
           {props.children}

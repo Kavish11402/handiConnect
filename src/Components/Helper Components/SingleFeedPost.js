@@ -19,10 +19,27 @@ export default function SingleFeedPost({ singlePost , state })
 
     console.log("Single Post =>",singlePost)
 
-    /*function editPostHandler()
+    function postCreatedAt()
     {
-        console.log("Edit Post Activated")
-    }*/
+        /*10:45:37*/
+        const serverTime = singlePost.createdAt;
+        let myDate = (serverTime.slice(0, serverTime.indexOf("T"))).split("-");
+        let myTime = (serverTime.slice( serverTime.indexOf("T") + 1, serverTime.indexOf(".")).split(':'));
+        const IST_TimeStd = [5,30];
+        const monthList = [
+            "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ];
+        if( (Number(myTime[1])+IST_TimeStd[1])>60 )
+        {
+            myTime[1] = (Number(myTime[1])-60).toString();
+            myTime[0] = (Number(myTime[0])+1).toString();
+        }
+        let postDate = myDate[2] + "/" + monthList[Number(myDate[1])] + "/" + myDate[0];
+        let postTime = ((Number(myTime[0])+IST_TimeStd[0])-12).toString()+":"+ (Number(myTime[1])+IST_TimeStd[1]).toString()+":"+ myTime[2].toString();
+        postTime = postTime.concat( ((Number(myTime[0])+IST_TimeStd[0])>12)?" PM (IST)":" AM (IST)" );
+        return postDate + " -- " + postTime;
+    }
 
     function deletePostHandler(postID)
     {
@@ -34,6 +51,11 @@ export default function SingleFeedPost({ singlePost , state })
         const likeList = singlePost.productLikesList;
         likeList.push(myLocalContext.userInfo.uid)
         PostLikesHandler( singlePost._id , likeList , router )
+    }
+
+    function editPostHandler()
+    {
+
     }
 
     function removeLikeHandler()
@@ -104,13 +126,16 @@ export default function SingleFeedPost({ singlePost , state })
                                   {
                                       myLocalContext.userInfo.userName===singlePost.uploaderName&&
                                       <div>
-                                          {/*<Menu.Item>
+                                          <Menu.Item>
                                               <button
-                                                  onClick={ ()=>{editPostHandler()} }
+                                                  onClick={ ()=>{
+                                                      myLocalContext.setViewPostData(singlePost)
+                                                      myLocalContext.setEditPostDialogStatus(true)
+                                                  } }
                                                   className={"ui-active:bg-violet-500 ui-active:text-white ui-not-active: text-violet-500 group flex w-full items-center rounded-md px-2 py-2 text-sm"}>
                                                   Edit Post
                                               </button>
-                                          </Menu.Item>*/}
+                                          </Menu.Item>
                                           <Menu.Item>
                                               <button
                                                   onClick={ ()=>{deletePostHandler(singlePost._id)} }
@@ -267,8 +292,6 @@ export default function SingleFeedPost({ singlePost , state })
           </div>
 
 
-
-
           {/* Title */}
           <div>
 
@@ -286,7 +309,7 @@ export default function SingleFeedPost({ singlePost , state })
 
           {/* Creation Date */}
           <div>
-              <p>25/Nov/2022 -- 5:30PM</p>
+              <p>{postCreatedAt()}</p>
           </div>
 
       </div>

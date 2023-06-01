@@ -20,7 +20,7 @@ export function savePostToFirebaseStorage( userPost,setUploadLoading,setAddPostD
     pImage.map(
         (singleFile) => {
 
-            uploadBytes( ref(storage,`Post_Images/${singleFile.name+v4()}`) , singleFile )
+            uploadBytes( ref(storage,`Post_Images/${v4()}`) , singleFile )
                 .then((uploadResult)=>
                     {
                         getDownloadURL( uploadResult.ref )
@@ -113,6 +113,25 @@ export async function editProfile( userData , setViewProfileDialogStatus , setUp
 
 }
 
+export function editPost( postId , updatedPostData , setUploadLoading , setEditPostDialogStatus , router )
+{
+    axiosURL
+        .post(
+            "/updatePost"
+            ,{
+                postId,
+                updatedPostData
+            }
+        )
+        .then(()=>
+        {
+            console.log("all Done");
+            setEditPostDialogStatus(false)
+            setUploadLoading(false)
+            router.push("/HomePage")
+        })
+        .catch(()=>{console.log("error Occurred")})
+}
 
 export function deletePost(postID,router)
 {

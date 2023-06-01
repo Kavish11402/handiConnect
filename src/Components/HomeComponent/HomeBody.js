@@ -23,7 +23,7 @@ export default function HomeBody({allPost})
                 <div className={"flex flex-row space-x-4"}>
 
 
-                    <div className={"cursor-pointer bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:from-cyan-400 hover:via-purple-400 hover:to-pink-400 transition-all ease-linear text-white px-5 py-2 text-lg font-semibold rounded-3xl flex flex-row space-x-4"} onClick={ ()=>{ myLocalContext.setCreateAnnouncementDialogStatus(true) } } >
+                    {/*<div className={"cursor-pointer bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:from-cyan-400 hover:via-purple-400 hover:to-pink-400 transition-all ease-linear text-white px-5 py-2 text-lg font-semibold rounded-3xl flex flex-row space-x-4"} onClick={ ()=>{ myLocalContext.setCreateAnnouncementDialogStatus(true) } } >
                         <p className={"h-fit my-auto"}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                                  stroke="currentColor" className="w-6 h-6">
@@ -33,7 +33,7 @@ export default function HomeBody({allPost})
 
                         </p>
                         <p>Make Announcement</p>
-                    </div>
+                    </div>*/}
 
 
                     <div className={"cursor-pointer bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 hover:from-cyan-400 hover:via-purple-400 hover:to-pink-400 transition-all ease-linear text-white px-5 py-2 text-2xl font-semibold rounded-3xl flex flex-row space-x-4"} onClick={ ()=>{ myLocalContext.setAddPostDialogStatus(true) } } >
@@ -90,14 +90,14 @@ export default function HomeBody({allPost})
                     <div className={"flex flex-col lg:flex-row justify-center w-fit bg-amber-300/70 p-2 rounded-xl space-y-2 lg:space-y-0 lg:space-x-2 "}>
 
                         {/* Overview Button */}
-                        <Tab className={"transition-all ease-linear w-80 rounded-xl py-2.5 text-xl font-medium text-pink-500 outline-0 border-2 border-transparent" +
+                        <Tab className={"transition-all ease-linear w-52 rounded-xl py-2.5 text-lg font-medium text-pink-500 outline-0 border-2 border-transparent" +
                             " ui-selected:bg-white ui-selected:shadow ui-selected:border-pink-500" +
                             " ui-not-selected:text-gray-400 ui-not-selected:hover:bg-white/[0.5] ui-not-selected:hover:text-pink-500"}>
                             All Posts
                         </Tab>
 
                         {/* Course Content Button */}
-                        <Tab className={"transition-all ease-linear w-80 rounded-xl py-2.5 text-xl font-medium text-pink-500 outline-0 border-2 border-transparent" +
+                        <Tab className={"transition-all ease-linear w-52 rounded-xl py-2.5 text-lg font-medium text-pink-500 outline-0 border-2 border-transparent" +
                             " ui-selected:bg-white ui-selected:shadow ui-selected:border-pink-500" +
                             " ui-not-selected:text-gray-400 ui-not-selected:hover:bg-white/[0.5] ui-not-selected:hover:text-pink-500"}>
                             My Posts
